@@ -40,9 +40,6 @@ function setup() {
   poseNet = ml5.poseNet(video, modelLoaded);
   poseNet.on("pose", gotPoses);
 
-  //cnv.mousePressed(canvasPressed);
-  background(220);
-  text("tap here to play", 10, 20);
 }
 
 //Checks for poses at all, and defines skeleton and poses for us
@@ -113,15 +110,14 @@ function draw() {
                     start+=10;
             }*/
 
-/*function setup() {
-  let cnv = createCanvas(100, 100);
-  cnv.mousePressed(canvasPressed);
-  background(220);
-  text('tap here to play', 10, 20);
-}*/
-
-function canvasPressed() {
+function mousePressed() {
   // playing a sound file on a user gesture
+  // Stops audio if it is already playing
   // is equivalent to `userStartAudio()`
-  mySound.play();
+  
+  if (mySound.isPlaying()) {
+    mySound.stop();
+  } else {
+    mySound.play();
+  }
 }
